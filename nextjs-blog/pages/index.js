@@ -1,20 +1,68 @@
 import Head from 'next/head';
+import Link from 'next/link';
+import Script from "next/script";
+
 import styles from '../styles/Home.module.css';
 
-export default function Home() {
+import { getSortedPostsData } from "../lib/posts";
+
+export async function getStaticProps() {
+    // console.log("--- typeof window => ", typeof window === 'undefined', " --- ", typeof global === 'undefined')
+
+    const allPostsData = getSortedPostsData();
+    return {
+            props: {
+                allPostsData
+            }
+        };
+}
+
+export default function Home({ allPostsData }) {
+    console.log("F::: ", allPostsData.length);
+    
+    if (typeof window === "undefined") 
+        console.log("this code os running on SERVER SIDE!!!");
+    else
+        console.log("this code os running on CLIENT SIDE!!!");
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Script
+        // src="https://connect.facebook.net/en_US/sdk.js"
+        // strategy="lazyOnload"
+        // onLoad={() =>
+        //     {
+        //         console.log(`script loaded correctly, window.FB has been populated`);
+        //         window.FB;
+        //     }
+        // }
+      />
 
       <main>
         <h1 className={styles.title}>
-          Learn <a href="https://nextjs.org">Next.js!</a>
+          {/* Learn <a href="https://nextjs.org">Next.js!</a> */}
+          Go to <Link href="/posts">Posts!</Link>
+        </h1>
+        <h1 className={styles.title}>
+          Learn <a href="/asd">Next.js!</a> {/* not good way, instead use <Link> */}
+          {/* Read <Link href="/asd">this page!</Link> */}
+        </h1>
+        <h1 className={styles.title}>
+          {/* Learn <a href="https://nextjs.org">Next.js!</a> */}
+          Read <Link href="/asd/qindex">this page1!</Link>
+        </h1>
+        <h1 className={styles.title}>
+          Read <Link href="/q">this page2!</Link>
         </h1>
 
-        <p className={styles.description}>
+        <p>My introduction: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor molestiae rerum labore nemo quidem dolore.</p>
+
+
+        {/* <p className={styles.description}>
           Get started by editing <code>pages/index.js</code>
         </p>
 
@@ -46,7 +94,7 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-        </div>
+        </div> */}
       </main>
 
       <footer>
