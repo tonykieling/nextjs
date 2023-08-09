@@ -4,22 +4,22 @@ import Script from "next/script";
 
 import styles from '../styles/Home.module.css';
 
-import { getSortedPostsData } from "../lib/posts";
+// import { getSortedPostsData } from "../lib/posts";
 
-export async function getStaticProps() {
-    // console.log("--- typeof window => ", typeof window === 'undefined', " --- ", typeof global === 'undefined')
+// export async function getStaticProps() {
+//     // console.log("GETSTATICPROS");
+//     // console.log("--- typeof window => ", typeof window === 'undefined', " --- ", typeof global === 'undefined')
 
-    const allPostsData = getSortedPostsData();
-    return {
-            props: {
-                allPostsData
-            }
-        };
-}
+//     const allPostsData = getSortedPostsData();
+//     return {
+//             props: {
+//                 allPostsData
+//             }
+//         };
+// }
 
-export default function Home({ allPostsData }) {
-    console.log("F::: ", allPostsData.length);
-    
+// export default function Home({ allPostsData }) {
+export default function Home() {
     if (typeof window === "undefined") 
         console.log("this code os running on SERVER SIDE!!!");
     else
