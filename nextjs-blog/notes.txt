@@ -1,0 +1,37 @@
+- file structure
+    _document.js - it has html, lang and so on
+    _app.js - head
+    Layout.js will be applied individually when the component is imported into another component
+- global.css can be imported only by _app.js and the styles will be applied for all pages
+- Home.module.css will be imported by Home and does not collide with any other component/style
+- for routing purposes, it is possible to create /pages/test and pages/test.js
+- <Link> loads the page whitin the application, meaning Next.js will download any file pointed by <Link> on a lazyLoad basis
+- scripts for third-party components can be loaded by next/script
+
+- installing and using sass and tailwind
+    https://nextjs.org/learn/basics/assets-metadata-css/styling-tips
+
+- https://maikelveen.com/blog/how-to-solve-module-not-found-cant-resolve-fs-in-nextjs
+    . In essence, Next.js is a web server running in a Node runtime environment. 
+        It serves pages on specific routes, determined by the files in the pages folder of the Next.js project.
+    . if (typeof window === "undefined") console.log("this code is running on SERVER SIDE!!!");
+
+Rendering:
+- Server Side Rendering (SSR)
+Because **getServerSideProps** is called at request time, its parameter (context) contains request specific parameters.
+- Static Site Generation (SSG)
+**getStaticProps** function runs before (and in build time) the component (only a page!) on which is locatted to be loaded.
+- Client-side Rendering (CSR)
+If you do not need to pre-render the data
+
+SWR
+The team behind Next.js has created a React hook for data fetching called SWR.
+We highly recommend it if you’re fetching data on the client side.
+It handles caching, revalidation, focus tracking, refetching on interval, and more.
+
+Dynamic routes in Next.js got the page file name as [id].js
+the page file must contain:
+1- a React component to render this page
+2- getStaticPaths which returns an array of possible values for id
+3- getStaticProps which fetches necessary data for the post with id
+
