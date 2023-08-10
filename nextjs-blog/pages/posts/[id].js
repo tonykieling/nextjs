@@ -1,8 +1,10 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import Layout from '../../components/layout';
 import utilStyles from '../../styles/utils.module.css';
 
 import { getAllPostsIds, getPostData } from "../../lib/posts";
+import Date from '../../components/date';
 
 export async function getStaticProps({ params }) {
     console.log("11111111- getStaticProps");
@@ -28,24 +30,34 @@ export async function getStaticPaths() {
 }
 
 
-export default function Post({ postData: {id, title, date}}) {
-    console.log("-------: ", id)
+export default function Post({ postData }) {
+    console.log("postData: ", postData)
     return (
         <>
             <Layout>
-                <h1> Posts </h1>
-                <h2> <Link href="/">Back to home</Link> </h2>
+                <Head>
+                    <title>
+                        { postData.title }
+                    </title>
+                </Head>
+
+                <h1> 
+                    <Link href={"/posts"} className={`${utilStyles.url}`}> Posts </Link>
+                </h1>
+                <h2> <Link href="/" className={`${utilStyles.url}`}>Back to home</Link> </h2>
                 <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                     <h2 className={utilStyles.headingLg}>Post</h2>
                     <ul className={utilStyles.list}>
                     {/* {postData.map(({ id, date, title }) => ( */}
-                        <li className={utilStyles.listItem} key={id}>
-                            {title} <br />
-                            {id} <br />
-                            {date}
+                        <li className={utilStyles.listItem} key={postData.id}>
+                            <h1 className={utilStyles.headingXl}> {postData.title} </h1> <br />
+                            {postData.id} <br />
+                            {/* {postData.date} */}
+                            <Date dateString={postData.date} />
                         </li>
                     {/* ))} */}
                     </ul>
+                    <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
                 </section>
         </Layout>
         </>

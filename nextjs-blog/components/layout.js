@@ -74,7 +74,8 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
+          <span style={{color: "blue"}}>← </span>
+          <Link href="/" className={utilStyles.url}>Back to home</Link>
         </div>
       )}
     </div>

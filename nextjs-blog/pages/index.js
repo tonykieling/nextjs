@@ -45,19 +45,22 @@ export default function Home() {
         <Layout home={true}>
             <main>
                 <h1 className={styles.title}>
-                {/* Learn <a href="https://nextjs.org">Next.js!</a> */}
-                Go to <Link href="/posts">Posts!</Link>
+                    {/* Learn <a href="https://nextjs.org">Next.js!</a> */}
+                    Go to <Link href="/posts">Posts!</Link>
                 </h1>
                 <h1 className={styles.title}>
-                Learn <a href="/asd">Next.js!</a> {/* not good way, instead use <Link> */}
-                {/* Read <Link href="/asd">this page!</Link> */}
+                    Learn <a href="/asd">Next.js!</a> {/* not good way, instead use <Link> */}
+                    {/* Read <Link href="/asd">this page!</Link> */}
                 </h1>
                 <h1 className={styles.title}>
-                {/* Learn <a href="https://nextjs.org">Next.js!</a> */}
-                Read <Link href="/asd/qindex">this page1!</Link>
+                    {/* Learn <a href="https://nextjs.org">Next.js!</a> */}
+                    Read <Link href="/asd/qindex">this page1!</Link>
                 </h1>
                 <h1 className={styles.title}>
-                Read <Link href="/q">this page2!</Link>
+                    Read <Link href="/q">this page2!</Link>
+                </h1>
+                <h1 className={styles.title}>
+                    <Link href="/handleAPI">Call local API</Link>
                 </h1>
 
                 <p>My introduction: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor molestiae rerum labore nemo quidem dolore.</p>

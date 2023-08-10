@@ -35,3 +35,4 @@ the page file must contain:
 2- getStaticPaths which returns an array of possible values for id
 3- getStaticProps which fetches necessary data for the post with id
 
+getStaticProps and getStaticPaths run only on the server-side and will never run on the client-side. Moreover, these functions will not be included in the JS bundle for the browser. That means you can write code such as direct database queries without sending them to browsers.
